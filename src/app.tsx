@@ -1,20 +1,16 @@
-import { ExportChat } from './components/export-chat';
 import { Header } from './components/header';
 import { Sidebar } from './components/sidebar/sidebar';
-import { SidebarToggle } from './components/sidebar/sidebar-toggle';
+import { useSidebarState } from './lib/store';
+import { cn } from './lib/utils';
 
 export function App() {
+  const open = useSidebarState(state => state.open);
+
   return (
-    <div className='flex min-h-dvh bg-card'>
+    <div className='min-h-dvh bg-card'>
       <Sidebar />
-      <main className='flex-1 p-2'>
-        <div className='flex w-full items-center justify-between'>
-          <div className='flex items-center gap-4'>
-            <SidebarToggle />
-            <Header />
-          </div>
-          <ExportChat />
-        </div>
+      <main className={cn('p-2 duration-200', open && 'ml-64')}>
+        <Header />
       </main>
     </div>
   );
