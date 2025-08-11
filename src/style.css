@@ -122,3 +122,7 @@
 .group :where(button)[data-state="open"] ~ a {
   background-color: var(--accent);
 }
+
+.sidebar-chats:has([data-state="visible"]) [data-radix-scroll-area-viewport] {
+  padding-right: 1rem;
+}

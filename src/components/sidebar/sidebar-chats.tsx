@@ -3,7 +3,21 @@ import { SidebarChat } from './sidebar-chat';
 
 export function SidebarChats() {
   return (
-    <ScrollArea className='h-[calc(100vh-9rem)] flex-1'>
+    <ScrollArea type='always' className='sidebar-chats h-[calc(100dvh-9rem)] flex-1'>
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
       <SidebarChat />
       <SidebarChat />
       <SidebarChat />
