@@ -1,6 +1,5 @@
 import { CheckIcon, CopyIcon, RefreshCcwIcon, Trash2Icon, Volume2Icon } from 'lucide-react';
 import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -11,16 +10,16 @@ import {
   AlertDialogTitle,
 } from '~/components/ui/alert-dialog';
 import { Button } from '~/components/ui/button';
+import { markdown } from '~/data/markdown';
+import { ChatMarkdown } from './chat-markdown';
 
 export function ChatMessageAI() {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const message =
-    '<p>Sure! What does your React component need to do, and are you starting from scratch or working with existing code?</p>';
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(message);
+      await navigator.clipboard.writeText(markdown);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch (err) {
@@ -30,7 +29,7 @@ export function ChatMessageAI() {
 
   return (
     <div className='group space-y-0.5'>
-      <ReactMarkdown>{message}</ReactMarkdown>
+      <ChatMarkdown content={markdown} />
       <div className='flex gap-1 opacity-0 duration-200 group-hover:opacity-100'>
         <Button variant='ghost' size='xs' onClick={handleCopy}>
           {copied ? <CheckIcon className='size-4' /> : <CopyIcon className='size-4' />}
