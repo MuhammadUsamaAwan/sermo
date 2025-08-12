@@ -18,7 +18,7 @@ import {
 } from '~/components/ui/dropdown-menu';
 
 export function SidebarChat() {
-  const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const [isRenaming, setIsRenaming] = useState(false);
   const [chatName, setChatName] = useState('My Chat');
   const [tempName, setTempName] = useState(chatName);
@@ -77,7 +77,7 @@ export function SidebarChat() {
               <DropdownMenuItem onClick={startRename}>
                 <PencilLineIcon className='size-4' /> Rename
               </DropdownMenuItem>
-              <DropdownMenuItem className='text-destructive focus:text-destructive' onClick={() => setOpen(true)}>
+              <DropdownMenuItem className='text-destructive focus:text-destructive' onClick={() => setDeleteOpen(true)}>
                 <Trash2Icon className='size-4 text-destructive' /> Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -98,7 +98,7 @@ export function SidebarChat() {
           </a>
         )}
       </div>
-      <AlertDialog open={open} onOpenChange={setOpen}>
+      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Chat?</AlertDialogTitle>
