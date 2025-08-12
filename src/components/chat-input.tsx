@@ -1,6 +1,6 @@
-import { ArrowUpIcon, PlusIcon, XIcon } from 'lucide-react';
+import { ArrowUpIcon, PlusIcon } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { Badge } from '~/components/ui/badge';
+import { FilePreview } from '~/components/file-preview';
 import { cn } from '~/lib/utils';
 
 export function ChatInput() {
@@ -45,19 +45,18 @@ export function ChatInput() {
       <button className='absolute top-2 right-2 cursor-pointer rounded-full bg-foreground p-2'>
         <ArrowUpIcon className='size-5 text-background' />
       </button>
-      <div className='mx-auto flex flex-wrap gap-2'>
-        {files.map(f => (
-          <Badge variant='outline' key={f.id}>
-            {f.file.name}{' '}
-            <button
-              className='cursor-pointer'
-              onClick={() => setFiles(files => files.filter(files => files.id !== f.id))}
-            >
-              <XIcon className='size-3' />
-            </button>
-          </Badge>
-        ))}
-      </div>
+      {files.length > 0 && (
+        <div className='mx-auto flex max-w-2xl flex-wrap gap-2'>
+          {files.map(f => (
+            <FilePreview
+              key={f.id}
+              file={f.file}
+              onRemove={() => setFiles(files => files.filter(files => files.id !== f.id))}
+              className='min-w-0 max-w-xs'
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
