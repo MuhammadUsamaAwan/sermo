@@ -1,3 +1,5 @@
+import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { useIsMobile } from '~/hooks/use-mobile';
 import { useSidebarState } from '~/lib/store';
 import { cn } from '~/lib/utils';
 import { SidebarChats } from './sidebar-chats';
@@ -7,12 +9,15 @@ import { SidebarSettings } from './sidebar-settings';
 
 export function Sidebar() {
   const open = useSidebarState(state => state.open);
+  const toggle = useSidebarState(state => state.toggle);
+  const isMobile = useIsMobile();
 
-  return (
+  const content = (
     <div
       className={cn(
-        'fixed flex h-dvh w-64 flex-col bg-background px-2 py-2 text-sm duration-300',
-        !open && '-translate-x-64'
+        'flex h-dvh w-64 flex-col bg-background px-2 py-2 text-sm',
+        !open && !isMobile && '-translate-x-64',
+        !isMobile && 'fixed duration-300'
       )}
     >
       <SidebarHeader className='mb-2' />
@@ -20,5 +25,13 @@ export function Sidebar() {
       <SidebarChats />
       <SidebarSettings />
     </div>
+  );
+
+  return isMobile ? (
+    <Sheet open={open} onOpenChange={toggle}>
+      <SheetContent className='w-64'>{content}</SheetContent>
+    </Sheet>
+  ) : (
+    content
   );
 }
