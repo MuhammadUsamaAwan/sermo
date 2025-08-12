@@ -1,4 +1,5 @@
 import { ChatInput } from './components/chat-input';
+import { ChatMessages } from './components/chat-messages';
 import { Header } from './components/header';
 import { Sidebar } from './components/sidebar/sidebar';
 import { useIsMobile } from './hooks/use-mobile';
@@ -14,7 +15,7 @@ export function App() {
       <Sidebar />
       <main className={cn('relative flex h-dvh flex-col p-2 duration-200', open && !isMobile && 'ml-64')}>
         <Header />
-        <div className='flex-1'>chat messages</div>
+        <ChatMessages />
         <ChatInput />
       </main>
     </div>
