@@ -5,7 +5,7 @@ import { ChatMessageUser } from './chat-message-user';
 export function ChatMessages() {
   return (
     <ScrollArea className='h-0 flex-1'>
-      <div className='mx-auto w-full max-w-3xl space-y-2 px-4'>
+      <div className='mx-auto w-full max-w-3xl space-y-2 px-4 pb-6'>
         <ChatMessageUser />
         <ChatMessageAI />
       </div>
