@@ -12,8 +12,9 @@ export function App() {
   return (
     <div className='bg-card'>
       <Sidebar />
-      <main className={cn('relative h-dvh p-2 duration-200', open && !isMobile && 'ml-64')}>
+      <main className={cn('relative flex h-dvh flex-col p-2 duration-200', open && !isMobile && 'ml-64')}>
         <Header />
+        <div className='flex-1'>chat messages</div>
         <ChatInput />
       </main>
     </div>
