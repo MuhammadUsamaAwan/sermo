@@ -5,7 +5,7 @@ import { SidebarToggle } from './sidebar/sidebar-toggle';
 
 export function Header() {
   return (
-    <div className='flex w-full items-center justify-between'>
+    <div className='mb-1 flex w-full items-center justify-between'>
       <div className='flex items-center'>
         <SidebarToggle />
         <NewChat />
